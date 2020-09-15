@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_one  :student_detail # 生徒詳細
   has_one  :leader_detail  # 教員詳細
 
+  has_secure_password # bcryptパスワード機能
+
   with_options presence: true do
     validates :name            # ユーザー名
     validates :password_digest # パスワード（暗号された）
