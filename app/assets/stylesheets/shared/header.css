@@ -1,0 +1,33 @@
+/* ********** ヘッダー部分 ********** */
+.header-wrapper a {
+  display: inline-block;
+  color: white;
+}
+
+.header-wrapper {
+  background-color:#7e13ab;
+  color: white;
+  padding: 0 20px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title h1 {
+  font-size: 20px;
+}
+
+.header-buttons ul {
+  display: flex;
+  list-style: none;
+}
+
+.header-buttons li {
+  padding: 0 10px;
+  line-height: 60px;
+}
+
+.header-button:hover {
+  background-color: #8a16bc;
+}
