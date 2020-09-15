@@ -1,0 +1,19 @@
+<div class="main-wrapper">
+
+  <%# ********** 全体へのお知らせ ********** %>
+  <div class="posts">
+    <div class="content-title">
+      <h2>お知らせ 新規投稿</h2>
+    </div>
+
+    <div class="post-form">
+    <%= form_with url:item_orders_path(@item), id: 'post-form', class: 'post-form', local: true do |f| %>
+      <%= f.text :title, class: "post-form-content", id:"item-info", placeholder:"投稿本文" ,rows: 7 ,maxlength: 1000 %>
+      <%= f.text_area :content, class: "post-form-content", id:"item-info", placeholder:"投稿本文" ,rows: 7 ,maxlength: 1000 %>
+      <%= f.submit "投稿する" ,class:"post-form-submit-button" %>
+    <% end %>
+    </div>
+
+  </div>
+
+</div>
