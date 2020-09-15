@@ -12,4 +12,10 @@ class User < ApplicationRecord
     validates :phone           # 電話番号
     validates :type            # ユーザー種類
   end
+
+  def post_permitted
+    return true if admin == 0
+
+    false
+  end
 end

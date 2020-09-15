@@ -5,13 +5,16 @@
   </div>
   <div class="header-buttons">
     <ul>
-      <% if @current_user && @current_user.admin == 0 %>
+      <% if @current_user %>
+        <li>ログイン中 : <%= @current_user.name %> 様<li> 
+      <% end %>
+      <% if @current_user && @current_user.post_permitted %>
         <li class="header-button"><%= link_to "新規投稿", new_post_path %></li>
       <% end %>
       <li class="header-button"><a href="#">お知らせ</a></li>
       <li class="header-button"><a href="#">マイページ</a></li>
       <% if @current_user %>
-        <li class="header-button"><%= link_to "ログアウト", "/logout" %></li>
+        <li class="header-button"><%= link_to "ログアウト", "/logout", method: :delete %></li>
       <% else %>
         <li class="header-button"><%= link_to "ログイン", "/login" %></li>
       <% end %>
