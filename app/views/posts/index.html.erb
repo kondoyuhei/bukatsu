@@ -1,7 +1,46 @@
 <%= render partial: "shared/header" %>
 
-<div class="main">
-  <h2>メインコンテンツ</h2>
+<div class="main-wrapper">
+
+  <%# ********** 全体へのお知らせ ********** %>
+  <div class="posts">
+    <div class="content-title">
+      <h2>全体へのお知らせ</h2>
+    </div>
+    <div class="posts">
+      <div class="post">
+        <a href="#">2学期部費の請求書を配りました。</a>
+      </div>
+      <div class="post">
+        <a href="#">（高校）夏季豊能地区大会の要項</a>
+      </div>
+    </div>
+  </div>
+
+  <%# ********** 個人へのお知らせ ********** %>
+  <div class="posts"">
+    <div class="content-title">
+      <h2>個人へのお知らせ</h2>
+    </div>
+    <div class="posts">
+      <div class="post">
+        <a href="#">1学期部費が未納となっています。</a>
+      </div>
+    </div>
+  </div>
+
+  <%# ********** コメントした投稿 ********** %>
+  <div class="posts">
+    <div class="content-title">
+      <h3>コメントした投稿を見る</h3>
+    </div>
+    <div class="posts">
+      <div class="post">
+        <a href="#">（高校）夏季豊能地区大会の要項</a>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <%= render partial: "shared/footer" %>
