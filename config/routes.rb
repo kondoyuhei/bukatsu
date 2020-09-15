@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'posts#index'
+  # get '/login', 'users#login'
+  # get '/logout', 'users#logout'
   resources :posts
-  resources :users
+  # resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
