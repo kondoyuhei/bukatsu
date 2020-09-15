@@ -4,7 +4,7 @@
   </div>
 
   <div class="login-form">
-    <%= form_with model: @user, url: login_path, id: 'user-form', class: 'post-form', local: true do |f| %>
+    <%= form_with model: @user, url: '/login', method: :post, id: 'user-form', class: 'post-form', local: true do |f| %>
       <div class="user-form">
         <div>
           名前
