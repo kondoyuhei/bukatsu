@@ -40,3 +40,10 @@ a {
   border-left: 10px solid #7e13ab;
   border-bottom: 1px solid #dddddd;
 }
+
+.content-title-small {
+  margin: 10px;
+  padding: 16px;
+  border-left: 8px solid #7e13ab;
+  border-bottom: 1px solid #dddddd;
+}

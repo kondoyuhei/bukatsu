@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_new_user, only: [:login_page, :new]
+  before_action :check_administrator, only: [:new, :edit, :update, :destroy]
 
   def login_page
   end
@@ -22,6 +23,9 @@ class UsersController < ApplicationController
   def create
   end
 
+  def edit
+  end
+
   def update
   end
 
@@ -31,6 +35,12 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def list
+    @leaders = User.where(admin: 0)
+    @students = User.where(admin: 1).includes(:student_details)
+    @parents = User.where(admin: 2)
+  end
+
   private
 
   def set_new_user
@@ -38,7 +48,14 @@ class UsersController < ApplicationController
   end
 
   def login_params
-    params.require(:user).permit(:name, :password, :authenticity_token, :commit)
+    params.require(:user).permit(:name, :password)
+  end
+
+  def check_administrator
+    @user = User.find_by(id: params[:id])
+    return true if @user.admin == 0
+
+    false
   end
 
 end

@@ -13,7 +13,7 @@ class User < ApplicationRecord
     validates :type            # ユーザー種類
   end
 
-  def post_permitted
+  def administrator
     return true if admin == 0
 
     false

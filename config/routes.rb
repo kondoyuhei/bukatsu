@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post   '/login',  to: 'users#login'
   patch  '/login',  to: 'users#login'
   delete '/logout', to: 'users#logout'
+  get    '/users/list', to: 'users#list'
+  get    '/posts/list', to: 'posts#list'
   resources :posts
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
