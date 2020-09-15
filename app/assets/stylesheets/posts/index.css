@@ -1,19 +1,4 @@
 /* ********** メイン部分 ********** */
-a {
-  text-decoration: none;
-}
-
-.main-wrapper {
-  height: calc(100vh - 160px);
-  padding: 10px 20px;
-}
-
-.content-title {
-  margin: 10px;
-  padding: 20px;
-  border-left: 10px solid #7e13ab;
-  border-bottom: 1px solid #dddddd;
-}
 
 .posts {
   margin-bottom: 20px;
