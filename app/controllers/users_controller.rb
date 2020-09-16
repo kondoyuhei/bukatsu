@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_new_user, only: [:login_page, :new]
-  before_action :check_administrator, only: [:new, :edit, :update, :destroy]
+  before_action :check_administrator, only: [:edit, :update, :destroy]
 
   def login_page
   end
@@ -52,8 +52,7 @@ class UsersController < ApplicationController
   end
 
   def check_administrator
-    @user = User.find_by(id: params[:id])
-    return true if @user.admin == 0
+    return true if @current_user && @current_user.admin == 0
 
     false
   end
