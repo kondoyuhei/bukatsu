@@ -71,13 +71,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :password)
   end
 
-  def check_administrator
-    if @current_user && @current_user.administrator == false
-      flash[:notice] = "管理者としてログインしてください"
-      redirect_to root_path
-    end
-  end
-
   def registration_params
     params.require(:user).permit(:name, :password, :email, :phone, :admin)
   end

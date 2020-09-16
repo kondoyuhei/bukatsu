@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_administrator
+    if @current_user && @current_user.administrator == false
+      flash[:notice] = "管理者としてログインしてください"
+      redirect_to root_path
+    end
+  end
+
   private
 
   def set_current_user

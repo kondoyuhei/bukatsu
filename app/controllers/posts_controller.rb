@@ -19,19 +19,6 @@ class PostsController < ApplicationController
 
   private
 
-  def authenticate_user
-    unless @authenticate_user
-      redirect_to root_path
-    end
-  end
-
-  def check_administrator
-    unless @current_user && @current_user.administrator
-      flash[:notice] = "投稿の作成・編集・削除はできません。"
-      redirect_to root
-    end
-  end
-
   def set_post
     @post = Post.find_by(post_id: params[:id])
   end
