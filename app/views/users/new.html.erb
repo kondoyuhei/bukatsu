@@ -4,8 +4,9 @@
   </div>
 
   <div class="login-form">
-    <%= form_with model: @user, url: users_path, method: :post, id: 'user-form', class: 'post-form', local: true do |f| %>
-      <div class="user-form">
+    <%= form_with model: @user, id: 'signup-form', class: 'user-form', local: true do |f| %>
+
+      <div class="user-form-row">
         <div>
           名前
         </div>
@@ -13,25 +14,47 @@
           <%= f.text_field :name, class: 'user-form-text', id: 'user-name', placeholder: '例）近藤' %>
         </div>
       </div>
-      <div class="user-form">
+
+      <div class="user-form-row">
         <div>
           パスワード
         </div>
         <div>
-          <%= f.text_field :password, class: 'user-form-text', id: 'user-password', placeholder: '例）password' , maxlength: 10 %>
+          <%= f.password_field :password, class: 'user-form-text', id: 'user-password', placeholder: '例）password' , maxlength: 10 %>
         </div>
       </div>
-      <div class="user-form">
+
+      <div class="user-form-row">
+        <div>
+          Eメール
+        </div>
+        <div>
+          <%= f.text_field :email, class: 'user-form-text', id: 'user-email', placeholder: '例）abc@def.com' %>
+        </div>
+      </div>
+
+      <div class="user-form-row">
+        <div>
+          電話番号
+        </div>
+        <div>
+          <%= f.text_field :phone, class: 'user-form-text', id: 'user-phone', placeholder: '例）09000000000' %>
+        </div>
+      </div>
+
+      <div class="user-form-row">
         <div>
           ユーザー種類
         </div>
         <div>
-          <%= f.text_field :password, class: 'user-form-text', id: 'user-password', placeholder: '例）password' , maxlength: 10 %>
+          <%= f.collection_select(:admin, UserAdmin.all, :id, :value, { include_blank: "---" }, { class: 'user-form-select' , required: true }) %>
         </div>
       </div>
-      <div class="user-form">
-        <%= f.submit "ログインする", class: 'user-form-button' %>
+
+      <div class="user-form-row">
+        <%= f.submit "登録する", class: 'user-form-button' %>
       </div>
+
     <% end %>
   </div>
 </div>

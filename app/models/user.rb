@@ -10,11 +10,11 @@ class User < ApplicationRecord
     validates :name            # ユーザー名
     validates :password_digest # パスワード（暗号された）
     validates :phone           # 電話番号
-    validates :type            # ユーザー種類
+    validates :admin            # ユーザー種類
   end
 
   def administrator
-    return true if admin == 0
+    return true if admin == 11
 
     false
   end

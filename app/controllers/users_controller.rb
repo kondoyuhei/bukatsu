@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_new_user, only: [:login_page, :new]
-  before_action :check_administrator, only: [:edit, :update, :destroy]
+  # before_action :authenticate_user,   except: [:login_page, :login, :logout]
+  before_action :authenticate_user,   except: [:login_page, :login]
+  before_action :check_administrator, only:   [:new, :edit, :update, :destroy]
+  before_action :set_new_user,        only:   [:login_page, :new]
+
+  def index
+    @users = User.all
+  end
 
   def login_page
   end
@@ -21,6 +27,20 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(registration_params)
+    if @user.save && @user.admin == 11
+      flash[:notice] = "ユーザー（教員）を登録しました"
+      redirect_to '/users/list'
+    elsif @user.save && @user.admin == 1
+      flash[:notice] = "ユーザー（生徒）を登録しました"
+      redirect_to "/students/#{@user.id}/new"
+    elsif @user.save
+      flash[:notice] = "ユーザーを登録しました"
+      redirect_to root_path
+    else
+      flash[:notice] = "登録できませんでした"
+      render '/users/new'
+    end
   end
 
   def edit
@@ -36,8 +56,8 @@ class UsersController < ApplicationController
   end
 
   def list
-    @leaders = User.where(admin: 0)
-    @students = User.where(admin: 1).includes(:student_details)
+    @leaders = User.where(admin: 11)
+    @students = User.where(admin: 1)
     @parents = User.where(admin: 2)
   end
 
@@ -52,9 +72,15 @@ class UsersController < ApplicationController
   end
 
   def check_administrator
-    return true if @current_user && @current_user.admin == 0
-
-    false
+    if @current_user && @current_user.administrator == false
+      flash[:notice] = "管理者としてログインしてください"
+      redirect_to root_path
+    end
   end
+
+  def registration_params
+    params.require(:user).permit(:name, :password, :email, :phone, :admin)
+  end
+
 
 end

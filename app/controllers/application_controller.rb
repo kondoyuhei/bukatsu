@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :set_current_user
 
+  def authenticate_user
+    if @current_user == nil
+      flash[:notice] = "ログインしてください"
+      redirect_to '/login'
+    end
+  end
+
   private
 
   def set_current_user

@@ -12,6 +12,6 @@
   width: 50px;
 }
 
-.user-name, .user-edit, .user-delete, .user-parent {
-  width: 100px;
+.user-name, .user-parent, .user-edit {
+  width: 150px;
 }

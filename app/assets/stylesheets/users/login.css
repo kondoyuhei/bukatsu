@@ -1,16 +1,16 @@
 /* ********** ユーザーログインフォーム ********** */
-.login-form {
+.user-form {
   width: 300px;
 }
 
-.user-form {
+.user-form-row {
   width: 100%;
   margin: 10px;
   display: flex;
   align-items: center;
 }
 
-.user-form div {
+.user-form-row div {
   width: 100%;
 }
 
@@ -26,4 +26,9 @@
   padding: 20px;
   border: 1px solid #dddddd;
   background-color: #7e13ab;
+}
+
+.user-form-select {
+  width: 100%;
+  padding: 10px;
 }

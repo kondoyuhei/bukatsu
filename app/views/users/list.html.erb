@@ -16,8 +16,7 @@
       名前
     </div>
     <div class="user-edit user-element">
-    </div>
-    <div class="user-delete user-element">
+      操作
     </div>
   </div>
 
@@ -31,8 +30,7 @@
       </div>
       <div class="user-edit user-element">
         <%= link_to "編集", edit_user_path(leader.id) %>
-      </div>
-      <div class="user-delete user-element">
+        /
         <%= link_to "削除", user_path(leader.id), method: :delete %>
       </div>
     </div>
@@ -54,14 +52,13 @@
       学年
     </div>
     <div class="user-class user-element">
-      クラス
+      ク
     </div>
     <div class="user-parent user-element">
       保護者名
     </div>
     <div class="user-edit user-element">
-    </div>
-    <div class="user-delete user-element">
+      操作
     </div>
   </div>
 
@@ -74,19 +71,18 @@
         <%= student.name %>
       </div>
       <div class="user-grade user-element">
-        <%= student.grade %>
+        <%= "(年)" %>
       </div>
       <div class="user-class user-element">
-        <%= student.class %>
+        <%= "（ク）" %>
       </div>
       <div class="user-parent user-element">
         <%= "（保護者名）" %>
       </div>
       <div class="user-edit user-element">
-        <%= link_to "編集", edit_user_path(leader.id) %>
-      </div>
-      <div class="user-delete user-element">
-        <%= link_to "削除", user_path(leader.id), method: :delete %>
+        <%= link_to "編集", edit_user_path(student.id) %>
+        /
+        <%= link_to "削除", user_path(student.id), method: :delete %>
       </div>
     </div>
   <% end %>
@@ -107,8 +103,7 @@
       生徒名
     </div>
     <div class="user-edit user-element">
-    </div>
-    <div class="user-delete user-element">
+      操作
     </div>
   </div>
 
@@ -125,8 +120,7 @@
       </div>
       <div class="user-edit user-element">
         <%= link_to "編集", edit_user_path(parent.id) %>
-      </div>
-      <div class="user-delete user-element">
+        /
         <%= link_to "削除", user_path(parent.id), method: :delete %>
       </div>
     </div>

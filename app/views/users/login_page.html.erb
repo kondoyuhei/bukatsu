@@ -3,9 +3,10 @@
     <h2>ログイン</h2>
   </div>
 
-  <div class="login-form">
-    <%= form_with model: @user, url: '/login', method: :post, id: 'user-form', class: 'post-form', local: true do |f| %>
-      <div class="user-form">
+  <div>
+    <%= form_with model: @user, url: login_path, method: :post, id: 'login-form', class: 'user-form', local: true do |f| %>
+
+      <div class="user-form-row">
         <div>
           名前
         </div>
@@ -13,17 +14,20 @@
           <%= f.text_field :name, class: 'user-form-text', id: 'user-name', placeholder: '例）近藤' %>
         </div>
       </div>
-      <div class="user-form">
+
+      <div class="user-form-row">
         <div>
           パスワード
         </div>
         <div>
-          <%= f.text_field :password, class: 'user-form-text', id: 'user-password', placeholder: '例）password' , maxlength: 10 %>
+          <%= f.password_field :password, class: 'user-form-text', id: 'user-password', placeholder: '例）password' , maxlength: 10 %>
         </div>
       </div>
-      <div class="user-form">
+
+      <div class="user-form-row">
         <%= f.submit "ログインする", class: 'user-form-button' %>
       </div>
     <% end %>
+
   </div>
 </div>
