@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
 
   def set
     @student = StudentDetail.new(user_id: @user.id)
+    @parents = User.where(admin: 2)
   end
 
   def add

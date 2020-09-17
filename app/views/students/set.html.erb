@@ -43,7 +43,7 @@
         </div>
         <div>
           <%# f.text_field :parent, class: 'user-form-text', id: 'student-parent', placeholder: '例）3' %>
-          <%= f.collection_select(:parent, User.all, :id, :name, { include_blank: "なし" }, { class: 'user-form-select', id: 'student-classroom' }) %>
+          <%= f.collection_select(:parent, @parents, :id, :name, { include_blank: "なし" }, { class: 'user-form-select', id: 'student-classroom' }) %>
         </div>
       </div>
 
