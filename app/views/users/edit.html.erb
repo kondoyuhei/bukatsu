@@ -7,7 +7,14 @@
     <h2>ユーザー編集</h2>
   </div>
 
-  <div class='login-form'>
+  <div class='content-description'>
+    <p>ユーザー情報（共通項目）の編集を行います。</p>
+    <% if @user.student %>
+      <%= link_to '生徒詳細の編集はこちら', edit_student_path(@user) %>
+    <% end %>
+  </div>
+
+  <div class='content-main'>
     <%= form_with model: @user, id: 'edit-form', class: 'user-form', local: true do |f| %>
 
       <div class='user-form-row'>
@@ -48,7 +55,7 @@
       </div>
 
       <div class='user-form-row'>
-        <%= f.submit "編集する", class: 'user-form-button' %>
+        <%= f.submit '編集する', class: 'user-form-button' %>
       </div>
 
     <% end %>

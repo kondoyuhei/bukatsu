@@ -51,11 +51,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(registration_params)
     if @user.save && @user.admin == 11
-      flash[:notice] = "ユーザー（指導者）を登録しました"
-      redirect_to '/users/list'
+      flash[:notice] = "ユーザー #{@user.name} さん（指導者）を登録しました"
+      redirect_to users_list_path
     elsif @user.save && @user.admin == 1
-      flash[:notice] = "ユーザー（生徒）を登録しました"
-      redirect_to "/students/#{@user.id}/new"
+      flash[:notice] = "ユーザー #{@user.name}さん （生徒）を登録しました"
+      redirect_to set_student_path(@user)
+    elsif @user.save && @user.admin == 2
+      flash[:notice] = "ユーザー #{@user.name}さん （保護者）を登録しました"
+      redirect_to users_list_path
     elsif @user.save
       flash[:notice] = "ユーザーを登録しました"
       redirect_to root_path

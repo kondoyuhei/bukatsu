@@ -2,15 +2,15 @@
 <%#   ログインページ                             %>
 <%# **************************************** %>
 
-<div class="main-wrapper">
-  <div class="content-title">
+<div class='main-wrapper'>
+  <div class='content-title'>
     <h2>ログイン</h2>
   </div>
 
-  <div>
+  <div class='content-main'>
     <%= form_with model: @user, url: login_path, method: :post, id: 'login-form', class: 'user-form', local: true do |f| %>
 
-      <div class="user-form-row">
+      <div class='user-form-row'>
         <div>
           名前
         </div>
@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class="user-form-row">
+      <div class='user-form-row'>
         <div>
           パスワード
         </div>
@@ -28,8 +28,8 @@
         </div>
       </div>
 
-      <div class="user-form-row">
-        <%= f.submit "ログインする", class: 'user-form-button' %>
+      <div class='user-form-row'>
+        <%= f.submit 'ログインする', class: 'user-form-button' %>
       </div>
     <% end %>
 

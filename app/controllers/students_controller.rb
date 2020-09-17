@@ -30,11 +30,11 @@ class StudentsController < ApplicationController
       redirect_to 'users/list'
     end
     @student = StudentDetail.find_by(user_id: params[:id])
+    @parents = User.where(admin: 2)
   end
 
   def update
     @student = StudentDetail.find_by(user_id: params[:id])
-    binding.pry
     @student.grade = registration_params[:grade]
     @student.classroom = registration_params[:classroom]
     @student.parent1 = registration_params[:parent1]

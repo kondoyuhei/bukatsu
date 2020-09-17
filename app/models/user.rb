@@ -18,4 +18,16 @@ class User < ApplicationRecord
 
     false
   end
+
+  def student
+    return true if admin == 1
+
+    false
+  end
+
+  def parent
+    return true if admin == 2
+
+    false
+  end
 end

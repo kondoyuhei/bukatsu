@@ -2,19 +2,19 @@
 <%#   初期ユーザー登録ページ （初回のみ）            %>
 <%# **************************************** %>
 
-<div class="main-wrapper">
-  <div class="content-title">
+<div class='main-wrapper'>
+  <div class='content-title'>
     <h2>初期ユーザー登録</h2>
   </div>
 
-  <div class="content-description">
+  <div class='content-description'>
     <p>最初のユーザー（管理者）を登録します。</p>
   </div>
 
-  <div class="login-form">
+  <div class='content-main'>
     <%= form_with model: @user, url: '/users/first_user', id: 'signup-form', class: 'user-form', local: true do |f| %>
 
-      <div class="user-form-row">
+      <div class='user-form-row'>
         <div>
           名前
         </div>
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <div class="user-form-row">
+      <div class='user-form-row'>
         <div>
           パスワード
         </div>
@@ -32,7 +32,7 @@
         </div>
       </div>
 
-      <div class="user-form-row">
+      <div class='user-form-row'>
         <div>
           Eメール
         </div>
@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="user-form-row">
+      <div class='user-form-row'>
         <div>
           電話番号
         </div>
@@ -50,8 +50,8 @@
         </div>
       </div>
 
-      <div class="user-form-row">
-        <%= f.submit "初期ユーザー登録する", class: 'user-form-button' %>
+      <div class='user-form-row'>
+        <%= f.submit '初期ユーザー登録する', class: 'user-form-button' %>
       </div>
 
     <% end %>
