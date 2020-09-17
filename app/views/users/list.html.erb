@@ -106,15 +106,15 @@
             <% end %>
           </div>
           <div class='user-parent user-element'>
-            <% if student.student_detail.parent1 %>
-              <%= User.find_by(id: student.student_detail.parent1).name %>
+            <% if student.get_parent1 %>
+              <%= student.get_parent1.name %>
             <% else %>
               なし
             <% end %>
           </div>
           <div class='user-parent user-element'>
-            <% if student.student_detail.parent2 %>
-              <%= User.find_by(id: student.student_detail.parent2).name %>
+            <% if student.get_parent2 %>
+              <%= student.get_parent2.name %>
             <% else %>
               なし
             <% end %>

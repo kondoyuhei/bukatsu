@@ -53,4 +53,24 @@ class User < ApplicationRecord
     return User.find_by(id: student_id) if student_id
   end
 
+  # ****************************************
+  #   生徒に対して保護者1を返すメソッド
+  # ****************************************
+  def get_parent1
+    if StudentDetail.find_by(user_id: self.id)
+      parent_id = StudentDetail.find_by(user_id: self.id).parent1
+      return User.find_by(id: parent_id)
+    end
+  end
+
+  # ****************************************
+  #   生徒に対して保護者2を返すメソッド
+  # ****************************************
+  def get_parent2
+    if StudentDetail.find_by(user_id: self.id)
+      parent_id = StudentDetail.find_by(user_id: self.id).parent2
+      return User.find_by(id: parent_id)
+    end
+  end
+
 end
