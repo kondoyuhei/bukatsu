@@ -83,7 +83,9 @@
         <%= student.name %>
       </div>
       <div class='user-grade user-element'>
-        <%= '(年)' %>
+        <% if StudentDetail.where(user_id: student.id).exists? %>
+          <%= student.student_detail.grade %>
+        <% end %>
       </div>
       <div class='user-class user-element'>
         <%= '（ク）' %>
@@ -92,7 +94,9 @@
         <%= '（保護者名）' %>
       </div>
       <div class='user-edit user-element'>
-        <%= link_to '編集', edit_user_path(student.id) %>
+        <%= link_to '編集 ', edit_user_path(student.id) %>
+        /
+        <%= link_to '詳細の編集', edit_student_path(student.id) %>
         /
         <%= link_to '削除', user_path(student.id), method: :delete %>
       </div>

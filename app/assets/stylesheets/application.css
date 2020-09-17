@@ -26,7 +26,12 @@
 }
 
 a {
+  color: #7e13ab;
   text-decoration: none;
+}
+
+a:visited {
+  color: #7e13ab;
 }
 
 .main-wrapper {

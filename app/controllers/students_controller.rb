@@ -6,17 +6,17 @@ class StudentsController < ApplicationController
   before_action :authenticate_user
   before_action :check_administrator
   before_action :confirm_student, only: :new
+  before_action :set_user, only: [:set, :edit, :show]
 
-  def new
-    @user = User.find_by(id: params[:id])
+  def set
     @student = StudentDetail.new(user_id: @user.id)
-    binding.pry
   end
 
-  def create
-    student = StudentDetail.new(registration_params)
-    if student.save
-      flash[:notice] = "生徒詳細を保存しました"
+  def add
+    @student = StudentDetail.new(registration_params)
+    @user = User.find_by(id: registration_params[:user_id])
+    if @student.save
+      flash[:notice] = "#{@user.name} さんの生徒詳細を保存しました"
       redirect_to '/users/list'
     else
       flash[:notice] = "生徒詳細を保存できませんでした"
@@ -25,7 +25,11 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    @student = StudentDetail.find_by(id: params[:id])
+    if StudentDetail.where(user_id: params[:id]).empty?
+      flash[:notice] = "ユーザー詳細情報がありません"
+      redirect_to 'users/list'
+    end
+    @student = StudentDetail.find_by(user_id: params[:id])
   end
 
   def update
@@ -53,10 +57,13 @@ class StudentsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def registration_params
-    params.require(:student_detail).permit(:user_id, :grade, :classroom, :parent)
+    params.require(:student_detail).permit(:grade, :classroom, :parent).merge(user_id: params[:id])
   end
 
   def confirm_student
@@ -65,5 +72,9 @@ class StudentsController < ApplicationController
       flash[:notice] = "指定したユーザーは生徒でないため操作できません。"
       redirect_to '/users/list'
     end
+  end
+
+  def set_user
+    @user = User.find_by(id: params[:id])
   end
 end

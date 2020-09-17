@@ -135,7 +135,11 @@ class UsersController < ApplicationController
   # ****************************************
   def list
     @leaders = User.where(admin: 11)
-    @students = User.where(admin: 1)
+    if StudentDetail.all.length >= 1
+      @students = User.where(admin: 1).includes(:student_detail)
+    else
+      @students = User.where(admin: 1)
+    end
     @parents = User.where(admin: 2)
   end
 

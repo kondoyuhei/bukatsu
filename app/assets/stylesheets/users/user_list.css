@@ -15,3 +15,7 @@
 .user-name, .user-parent, .user-edit {
   width: 150px;
 }
+
+.user-edit {
+  width: 250px;
+}
