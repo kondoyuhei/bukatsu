@@ -1,3 +1,7 @@
+<%# **************************************** %>
+<%#   ユーザー編集ページ （管理者のみ）              %>
+<%# **************************************** %>
+
 <div class='main-wrapper'>
   <div class='content-title'>
     <h2>ユーザー編集</h2>
@@ -18,10 +22,10 @@
       <div class='user-form-row'>
         <div>
          <p>パスワード</p>
-         <p>（変更の場合だけ入力）</p>
+         <p>（変更する場合だけ入力）</p>
         </div>
         <div>
-          <%= f.password_field :password, class: 'user-form-text', id: 'user-password', placeholder: '変更する場合だけ入力' , maxlength: 10 %>
+          <%= f.password_field :password, class: 'user-form-text', id: 'user-password', placeholder: '変更なければ空欄' , maxlength: 10 %>
         </div>
       </div>
 

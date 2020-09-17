@@ -1,10 +1,15 @@
+# ************************************************************
+#   studentsコントローラー（生徒詳細管理）
+# ************************************************************
+
 class StudentsController < ApplicationController
   before_action :authenticate_user
   before_action :check_administrator
   before_action :confirm_student, only: :new
 
   def new
-    @student = StudentDetail.new(user_id: params[:id])
+    @user = User.find_by(id: params[:id])
+    @student = StudentDetail.new(user_id: @user.id)
     binding.pry
   end
 
@@ -57,7 +62,7 @@ class StudentsController < ApplicationController
   def confirm_student
     user = User.find_by(id: params[:id])
     if user.admin != 1
-      flash[:notice] = "指定したユーザーは生徒でないため生徒詳細を登録できません。"
+      flash[:notice] = "指定したユーザーは生徒でないため操作できません。"
       redirect_to '/users/list'
     end
   end

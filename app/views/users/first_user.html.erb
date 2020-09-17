@@ -1,14 +1,18 @@
 <%# **************************************** %>
-<%#   ユーザー追加ページ （管理者のみ）              %>
+<%#   初期ユーザー登録ページ （初回のみ）            %>
 <%# **************************************** %>
 
 <div class="main-wrapper">
   <div class="content-title">
-    <h2>ユーザーの追加</h2>
+    <h2>初期ユーザー登録</h2>
+  </div>
+
+  <div class="content-description">
+    <p>最初のユーザー（管理者）を登録します。</p>
   </div>
 
   <div class="login-form">
-    <%= form_with model: @user, id: 'signup-form', class: 'user-form', local: true do |f| %>
+    <%= form_with model: @user, url: '/users/first_user', id: 'signup-form', class: 'user-form', local: true do |f| %>
 
       <div class="user-form-row">
         <div>
@@ -47,16 +51,7 @@
       </div>
 
       <div class="user-form-row">
-        <div>
-          ユーザー種類
-        </div>
-        <div>
-          <%= f.collection_select(:admin, UserAdmin.all, :id, :value, { include_blank: "---" }, { class: 'user-form-select' , required: true }) %>
-        </div>
-      </div>
-
-      <div class="user-form-row">
-        <%= f.submit "追加する", class: 'user-form-button' %>
+        <%= f.submit "初期ユーザー登録する", class: 'user-form-button' %>
       </div>
 
     <% end %>
