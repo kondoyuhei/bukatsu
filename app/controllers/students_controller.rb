@@ -33,10 +33,12 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @student = StudentDetail.find_by(id: params[:id])
+    @student = StudentDetail.find_by(user_id: params[:id])
+    binding.pry
     @student.grade = registration_params[:grade]
     @student.classroom = registration_params[:classroom]
-    @student.parent = registration_params[:parent]
+    @student.parent1 = registration_params[:parent1]
+    @student.parent2 = registration_params[:parent2]
     if @student.save
       flash[:notice] = "生徒詳細を更新しました"
       redirect_to '/users/list'
@@ -63,7 +65,7 @@ class StudentsController < ApplicationController
   private
 
   def registration_params
-    params.require(:student_detail).permit(:grade, :classroom, :parent).merge(user_id: params[:id])
+    params.require(:student_detail).permit(:grade, :classroom, :parent1, :parent2).merge(user_id: params[:id])
   end
 
   def confirm_student

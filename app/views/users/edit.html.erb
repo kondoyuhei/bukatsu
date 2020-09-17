@@ -48,15 +48,6 @@
       </div>
 
       <div class='user-form-row'>
-        <div>
-          ユーザー種類
-        </div>
-        <div>
-          <%= f.collection_select(:admin, UserAdmin.all, :id, :value, { include_blank: '---' }, { class: 'user-form-select' , required: true }) %>
-        </div>
-      </div>
-
-      <div class='user-form-row'>
         <%= f.submit "編集する", class: 'user-form-button' %>
       </div>
 

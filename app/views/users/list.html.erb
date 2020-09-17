@@ -64,10 +64,13 @@
       学年
     </div>
     <div class='user-class user-element'>
-      ク
+      クラス
     </div>
     <div class='user-parent user-element'>
-      保護者名
+      保護者1
+    </div>
+    <div class='user-parent user-element'>
+      保護者2
     </div>
     <div class='user-edit user-element'>
       操作
@@ -83,15 +86,32 @@
         <%= student.name %>
       </div>
       <div class='user-grade user-element'>
-        <% if StudentDetail.where(user_id: student.id).exists? %>
-          <%= student.student_detail.grade %>
+        <% if student.student_detail.grade %>
+          <%= Grade.find(student.student_detail.grade).value %>
+        <% else %>
+          未登録
         <% end %>
       </div>
       <div class='user-class user-element'>
-        <%= '（ク）' %>
+        <% if student.student_detail.classroom %>
+          <%= Classroom.find(student.student_detail.classroom).value %>
+        <% else %>
+          未登録
+        <% end %>
       </div>
       <div class='user-parent user-element'>
-        <%= '（保護者名）' %>
+        <% if student.student_detail.parent1 %>
+          <%= User.find_by(id: student.student_detail.parent1).name %>
+        <% else %>
+          なし
+        <% end %>
+      </div>
+      <div class='user-parent user-element'>
+        <% if student.student_detail.parent2 %>
+          <%= User.find_by(id: student.student_detail.parent2).name %>
+        <% else %>
+          なし
+        <% end %>
       </div>
       <div class='user-edit user-element'>
         <%= link_to '編集 ', edit_user_path(student.id) %>
@@ -117,7 +137,7 @@
     <div class='user-name user-element'>
       名前
     </div>
-    <div class='user-student user-element'>
+    <div class='user-name user-element'>
       生徒名
     </div>
     <div class='user-edit user-element'>

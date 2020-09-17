@@ -8,7 +8,7 @@
   </div>
 
   <div class="login-form">
-    <%= form_with model: @student, url: add_student_path(@user), id: 'signup-form', class: 'user-form', local: true do |f| %>
+    <%= form_with model: @student, url: student_path(@user), id: 'signup-form', class: 'user-form', local: true do |f| %>
 
       <div class="user-form-row">
         <div>
@@ -43,7 +43,17 @@
         </div>
         <div>
           <%# f.text_field :parent, class: 'user-form-text', id: 'student-parent', placeholder: '例）3' %>
-          <%= f.collection_select(:parent, User.all, :id, :name, { include_blank: "なし" }, { class: 'user-form-select', id: 'student-classroom' }) %>
+          <%= f.collection_select(:parent1, User.all, :id, :name, { include_blank: "なし" }, { class: 'user-form-select', id: 'student-classroom' }) %>
+        </div>
+      </div>
+
+      <div class="user-form-row">
+        <div>
+          保護者
+        </div>
+        <div>
+          <%# f.text_field :parent, class: 'user-form-text', id: 'student-parent', placeholder: '例）3' %>
+          <%= f.collection_select(:parent2, User.all, :id, :name, { include_blank: "なし" }, { class: 'user-form-select', id: 'student-classroom' }) %>
         </div>
       </div>
 

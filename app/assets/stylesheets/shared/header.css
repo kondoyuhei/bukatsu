@@ -4,6 +4,10 @@
   color: white;
 }
 
+.header-wrapper a:visited {
+  color: white;
+}
+
 .header-wrapper {
   background-color:#7e13ab;
   color: white;
