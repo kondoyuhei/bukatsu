@@ -1,0 +1,56 @@
+<%# **************************************** %>
+<%#   生徒詳細追加ページ （管理者のみ）              %>
+<%# **************************************** %>
+
+<div class="main-wrapper">
+  <div class="content-title">
+    <h2>生徒詳細の追加</h2>
+  </div>
+
+  <div class="login-form">
+    <%= form_with model: @student, url: add_student_path(@user), id: 'signup-form', class: 'user-form', local: true do |f| %>
+
+      <div class="user-form-row">
+        <div>
+          名前
+        </div>
+        <div>
+          <%= @user.name %>
+        </div>
+      </div>
+
+      <div class="user-form-row">
+        <div>
+          学年
+        </div>
+        <div>
+          <%= f.collection_select(:grade, Grade.all, :id, :value, { include_blank: "---" }, { class: 'user-form-select', id: 'student-grade', required: true }) %>
+        </div>
+      </div>
+
+      <div class="user-form-row">
+        <div>
+          クラス
+        </div>
+        <div>
+          <%= f.collection_select(:classroom, Classroom.all, :id, :value, { include_blank: "---" }, { class: 'user-form-select', id: 'student-classroom', required: true }) %>
+        </div>
+      </div>
+
+      <div class="user-form-row">
+        <div>
+          保護者
+        </div>
+        <div>
+          <%# f.text_field :parent, class: 'user-form-text', id: 'student-parent', placeholder: '例）3' %>
+          <%= f.collection_select(:parent, @parents, :id, :name, { include_blank: "なし" }, { class: 'user-form-select', id: 'student-classroom' }) %>
+        </div>
+      </div>
+
+      <div class="user-form-row">
+        <%= f.submit "追加する", class: 'user-form-button' %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

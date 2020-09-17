@@ -1,0 +1,63 @@
+<%# **************************************** %>
+<%#   ユーザー編集ページ （管理者のみ）              %>
+<%# **************************************** %>
+
+<div class='main-wrapper'>
+  <div class='content-title'>
+    <h2>ユーザー編集</h2>
+  </div>
+
+  <div class='content-description'>
+    <p>ユーザー情報（共通項目）の編集を行います。</p>
+    <% if @user.student %>
+      <%= link_to '生徒詳細の編集はこちら', edit_student_path(@user) %>
+    <% end %>
+  </div>
+
+  <div class='content-main'>
+    <%= form_with model: @user, id: 'edit-form', class: 'user-form', local: true do |f| %>
+
+      <div class='user-form-row'>
+        <div>
+          名前
+        </div>
+        <div>
+          <%= f.text_field :name, class: 'user-form-text', id: 'user-name', placeholder: '例）近藤' %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <div>
+         <p>パスワード</p>
+         <p>（変更する場合だけ入力）</p>
+        </div>
+        <div>
+          <%= f.password_field :password, class: 'user-form-text', id: 'user-password', placeholder: '変更なければ空欄' , maxlength: 10 %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <div>
+          Eメール
+        </div>
+        <div>
+          <%= f.text_field :email, class: 'user-form-text', id: 'user-email', placeholder: '例）abc@def.com' %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <div>
+          電話番号
+        </div>
+        <div>
+          <%= f.text_field :phone, class: 'user-form-text', id: 'user-phone', placeholder: '例）09000000000' %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <%= f.submit '編集する', class: 'user-form-button' %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

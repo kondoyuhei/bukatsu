@@ -1,0 +1,184 @@
+<%# **************************************** %>
+<%#   ユーザー管理ページ （管理者のみ）              %>
+<%# **************************************** %>
+
+<div class='main-wrapper'>
+  <div class='content-title'>
+    <h2>ユーザー管理</h2>
+  </div>
+
+  <div class='content-right'>
+    <%= link_to 'ユーザーの追加', new_user_path %>
+  </div>
+
+  <div class='content-main'>
+    <%# ******************** %>
+    <%#   指導者              %>
+    <%# ******************** %>
+    <div class='content-box'>
+
+      <div class='content-title-small'>
+        <h3>指導者</h3>
+      </div>
+
+      <div class='user-record'>
+        <div class='user-id user-element'>
+          id
+        </div>
+        <div class='user-name user-element'>
+          名前
+        </div>
+        <div class='user-edit user-element'>
+          操作
+        </div>
+      </div>
+
+      <% @leaders.each do |leader| %>
+        <div class='user-record'>
+          <div class='user-id user-element'>
+            <%= leader.id %>
+          </div>
+          <div class='user-name user-element'>
+            <%= leader.name %>
+          </div>
+          <div class='user-edit user-element'>
+            <%= link_to '編集', edit_user_path(leader.id) %>
+            /
+            <%= link_to '削除', user_path(leader.id), method: :delete %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+    <%# ******************** %>
+    <%#   生徒              %>
+    <%# ******************** %>
+    <div class='content-box'>
+      <div class='content-title-small'>
+        <h3>生徒</h3>
+      </div>
+
+      <div class='user-record'>
+        <div class='user-id user-element'>
+          id
+        </div>
+        <div class='user-name user-element'>
+          名前
+        </div>
+        <div class='user-grade user-element'>
+          学年
+        </div>
+        <div class='user-class user-element'>
+          クラス
+        </div>
+        <div class='user-parent user-element'>
+          保護者1
+        </div>
+        <div class='user-parent user-element'>
+          保護者2
+        </div>
+        <div class='user-edit user-element'>
+          操作
+        </div>
+      </div>
+
+      <% @students.each do |student| %>
+        <div class='user-record'>
+          <div class='user-id user-element'>
+            <%= student.id %>
+          </div>
+          <div class='user-name user-element'>
+            <%= student.name %>
+          </div>
+          <div class='user-grade user-element'>
+            <% if student.student_detail.grade %>
+              <%= Grade.find(student.student_detail.grade).value %>
+            <% else %>
+              未登録
+            <% end %>
+          </div>
+          <div class='user-class user-element'>
+            <% if student.student_detail.classroom %>
+              <%= Classroom.find(student.student_detail.classroom).value %>
+            <% else %>
+              未登録
+            <% end %>
+          </div>
+          <div class='user-parent user-element'>
+            <% if student.get_parent1 %>
+              <%= student.get_parent1.name %>
+            <% else %>
+              なし
+            <% end %>
+          </div>
+          <div class='user-parent user-element'>
+            <% if student.get_parent2 %>
+              <%= student.get_parent2.name %>
+            <% else %>
+              なし
+            <% end %>
+          </div>
+          <div class='user-edit user-element'>
+            <%= link_to '編集 ', edit_user_path(student.id) %>
+            /
+            <%= link_to '詳細の編集', edit_student_path(student.id) %>
+            /
+            <%= link_to '削除', user_path(student.id), method: :delete %>
+          </div>
+        </div>
+      <% end %>
+    
+    </div>
+
+    <%# ******************** %>
+    <%#   保護者              %>
+    <%# ******************** %>
+    <div class='content-box'>
+
+      <div class='content-title-small'>
+        <h3>保護者</h3>
+      </div>
+
+      <div class='user-record'>
+        <div class='user-id user-element'>
+          id
+        </div>
+        <div class='user-name user-element'>
+          名前
+        </div>
+        <div class='user-name user-element'>
+          生徒名
+        </div>
+        <div class='user-edit user-element'>
+          操作
+        </div>
+      </div>
+
+      <% @parents.each do |parent| %>
+        <div class='user-record'>
+          <div class='user-id user-element'>
+            <%= parent.id %>
+          </div>
+          <div class='user-name user-element'>
+            <%= parent.name %>
+          </div>
+          <div class='user-name user-element'>
+            <% if parent.get_student %>
+              <%= parent.get_student.name %>
+            <% else %>
+              なし
+            <% end %>
+          </div>
+          <div class='user-edit user-element'>
+            <%= link_to '編集', edit_user_path(parent.id) %>
+            /
+            <%= link_to '削除', user_path(parent.id), method: :delete %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>

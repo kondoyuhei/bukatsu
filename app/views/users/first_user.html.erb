@@ -1,0 +1,59 @@
+<%# **************************************** %>
+<%#   初期ユーザー登録ページ （初回のみ）            %>
+<%# **************************************** %>
+
+<div class='main-wrapper'>
+  <div class='content-title'>
+    <h2>初期ユーザー登録</h2>
+  </div>
+
+  <div class='content-description'>
+    <p>最初のユーザー（管理者）を登録します。</p>
+  </div>
+
+  <div class='content-main'>
+    <%= form_with model: @user, url: '/users/first_user', id: 'signup-form', class: 'user-form', local: true do |f| %>
+
+      <div class='user-form-row'>
+        <div>
+          名前
+        </div>
+        <div>
+          <%= f.text_field :name, class: 'user-form-text', id: 'user-name', placeholder: '例）近藤' %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <div>
+          パスワード
+        </div>
+        <div>
+          <%= f.password_field :password, class: 'user-form-text', id: 'user-password', placeholder: '例）password' , maxlength: 10 %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <div>
+          Eメール
+        </div>
+        <div>
+          <%= f.text_field :email, class: 'user-form-text', id: 'user-email', placeholder: '例）abc@def.com' %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <div>
+          電話番号
+        </div>
+        <div>
+          <%= f.text_field :phone, class: 'user-form-text', id: 'user-phone', placeholder: '例）09000000000' %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <%= f.submit '初期ユーザー登録する', class: 'user-form-button' %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
