@@ -164,7 +164,11 @@
             <%= parent.name %>
           </div>
           <div class='user-name user-element'>
-            <%= '（生徒名）' %>
+            <% if parent.get_student %>
+              <%= parent.get_student.name %>
+            <% else %>
+              なし
+            <% end %>
           </div>
           <div class='user-edit user-element'>
             <%= link_to '編集', edit_user_path(parent.id) %>
