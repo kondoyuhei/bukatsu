@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get    '/users/list', to: 'users#list'
   get    '/posts/list', to: 'posts#list'
   get    '/students/:id/new', to: 'students#new'
+  get    '/users/first_user', to: 'users#first_user'
+  post   '/users/first_user', to: 'users#first_user_registration'
   resources :posts
   resources :users
-  resources :students, except: [:index, :edit]
+  resources :students
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
