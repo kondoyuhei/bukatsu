@@ -37,8 +37,10 @@ a {
 
 .content-title {
   margin: 10px;
-  padding: 20px;
+  padding: 20px;  
   border-left: 10px solid #7e13ab;
+  border-top: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
 }
 
@@ -46,6 +48,9 @@ a {
   margin: 10px;
   padding: 16px;
   border-left: 8px solid #7e13ab;
+  border-top: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
 }
 

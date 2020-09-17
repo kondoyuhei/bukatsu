@@ -1,16 +1,61 @@
-<div class="main-wrapper">
-  <div class="content-title">
-    <h2>ユーザー管理</h2>
+<div class='main-wrapper'>
+  <div class='content-title'>
+    <h2>ユーザー編集</h2>
   </div>
 
-  <div class="users-list"">
+  <div class='login-form'>
+    <%= form_with model: @user, id: 'edit-form', class: 'user-form', local: true do |f| %>
 
-    <div class="user-record">
-      <div class="user-name">id</div>
-      <div class="user-name">名前</div>
-      <div class="user-admin">種類</div>
-      <div class="user-edit"></div>
-      <div class="user-delete"></div>
-    </div>
+      <div class='user-form-row'>
+        <div>
+          名前
+        </div>
+        <div>
+          <%= f.text_field :name, class: 'user-form-text', id: 'user-name', placeholder: '例）近藤' %>
+        </div>
+      </div>
 
+      <div class='user-form-row'>
+        <div>
+         <p>パスワード</p>
+         <p>（変更の場合だけ入力）</p>
+        </div>
+        <div>
+          <%= f.password_field :password, class: 'user-form-text', id: 'user-password', placeholder: '変更する場合だけ入力' , maxlength: 10 %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <div>
+          Eメール
+        </div>
+        <div>
+          <%= f.text_field :email, class: 'user-form-text', id: 'user-email', placeholder: '例）abc@def.com' %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <div>
+          電話番号
+        </div>
+        <div>
+          <%= f.text_field :phone, class: 'user-form-text', id: 'user-phone', placeholder: '例）09000000000' %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <div>
+          ユーザー種類
+        </div>
+        <div>
+          <%= f.collection_select(:admin, UserAdmin.all, :id, :value, { include_blank: '---' }, { class: 'user-form-select' , required: true }) %>
+        </div>
+      </div>
+
+      <div class='user-form-row'>
+        <%= f.submit "編集する", class: 'user-form-button' %>
+      </div>
+
+    <% end %>
   </div>
+</div>

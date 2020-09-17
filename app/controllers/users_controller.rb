@@ -44,9 +44,24 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find_by(id: params[:id])
   end
 
   def update
+    @user = User.find_by(id: params[:id])
+
+    @user.name = registration_params[:name]
+    @user.email = registration_params[:email]
+    @user.password = registration_params[:password] if registration_params[:password] != ""
+    @user.phone = registration_params[:phone]
+
+    if @user.save
+      flash[:notice] = "ユーザー情報を編集しました"
+      redirect_to '/users/list'
+    else
+      flash[:notice] = "ユーザー情報を編集できませんでした"
+      render 'users/edit'
+    end
   end
 
   def logout
@@ -74,6 +89,4 @@ class UsersController < ApplicationController
   def registration_params
     params.require(:user).permit(:name, :password, :email, :phone, :admin)
   end
-
-
 end

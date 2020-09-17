@@ -1,9 +1,11 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user
   before_action :check_administrator
+  before_action :confirm_student, only: :new
 
   def new
     @student = StudentDetail.new(user_id: params[:id])
+    binding.pry
   end
 
   def create
@@ -24,7 +26,7 @@ class StudentsController < ApplicationController
   def update
     @student = StudentDetail.find_by(id: params[:id])
     @student.grade = registration_params[:grade]
-    @student.class = registration_params[:class]
+    @student.classroom = registration_params[:classroom]
     @student.parent = registration_params[:parent]
     if @student.save
       flash[:notice] = "生徒詳細を更新しました"
@@ -49,6 +51,14 @@ class StudentsController < ApplicationController
   private
 
   def registration_params
-    params.require(:student_detail).permit(:user_id, :grade, :class, :parent)
+    params.require(:student_detail).permit(:user_id, :grade, :classroom, :parent)
+  end
+
+  def confirm_student
+    user = User.find_by(id: params[:id])
+    if user.admin != 1
+      flash[:notice] = "指定したユーザーは生徒でないため生徒詳細を登録できません。"
+      redirect_to '/users/list'
+    end
   end
 end
