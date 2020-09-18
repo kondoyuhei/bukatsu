@@ -1,24 +1,24 @@
 <%# ******************** ページフッター ******************** %>
-<div class="header-wrapper">
-  <div class="header-title">
-    <h1><%= link_to "○○部ポータル", root_path %></h1>
+<div class='header-wrapper'>
+  <div class='header-left'>
+    <h1><%= link_to '○○部ポータル', root_path %></h1>
   </div>
-  <div class="header-buttons">
-    <ul>
+  <div class='header-right'>
+    <ul class='header-buttons'>
       <% if @current_user %>
-        <li>ログイン中 : <%= @current_user.name %> 様<li> 
+        <li><p>ログイン中 : <%= @current_user.name %> 様</p></li> 
       <% end %>
       <% if @current_user && @current_user.administrator %>
-        <li class="header-button"><%= link_to "新規投稿", new_post_path %></li>
-        <li class="header-button"><%= link_to "投稿管理", "/posts/list" %></li>
-        <li class="header-button"><%= link_to "ユーザー管理", "/users/list" %></li>
+        <li><%= link_to '新規投稿', new_post_path %></li>
+        <li><%= link_to '投稿管理', '/posts/list' %></li>
+        <li><%= link_to 'ユーザー管理', '/users/list' %></li>
       <% end %>
-      <li class="header-button"><a href="#">お知らせ</a></li>
-      <li class="header-button"><a href="#">マイページ</a></li>
+        <li><a href='#'>お知らせ</a></li>
+        <li><a href='#'>マイページ</a></li>
       <% if @current_user %>
-        <li class="header-button"><%= link_to "ログアウト", "/logout", method: :delete %></li>
+        <li><%= link_to 'ログアウト', '/logout', method: :delete %></li>
       <% else %>
-        <li class="header-button"><%= link_to "ログイン", "/login" %></li>
+        <li><%= link_to 'ログイン', '/login' %></li>
       <% end %>
     </ul>
   </div>
