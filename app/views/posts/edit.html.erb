@@ -1,23 +1,23 @@
 <%# **************************************** %>
-<%#   投稿作成ページ （管理者のみ）              %>
+<%#   投稿編集ページ （管理者のみ）              %>
 <%# **************************************** %>
 
 <div class='main-wrapper'>
   <div class='content-title'>
-    <h2>お知らせ投稿の作成</h2>
+    <h2>お知らせ投稿の編集</h2>
   </div>
 
   <div class='content-description'>
-    <p>お知らせ投稿の作成を行います。</p>
+    <p>お知らせ投稿の編集を行います。</p>
   </div>
 
   <div class='content-main'>
     <%= form_with model: @post, id: 'post-edit-form', class: 'post-form', local: true do |f| %>
 
-      <%= render partial: 'posts/post_form', locals: { f: f } %>
+      <%= render partial: '/posts/post_form', locals: { f: f } %>
 
-      <div class='post-form-row'>
-        <%= f.submit '作成する', class: 'post-form-button' %>
+      <div class='user-form-row'>
+        <%= f.submit '編集する', class: 'post-form-button' %>
       </div>
 
     <% end %>
