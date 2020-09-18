@@ -25,6 +25,10 @@
   align-items: center;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   color: #7e13ab;
   text-decoration: none;

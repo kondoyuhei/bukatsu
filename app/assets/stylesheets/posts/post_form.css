@@ -1,0 +1,46 @@
+/* ********** 投稿フォーム ********** */
+.post-form {
+  width: 100%;
+}
+
+.post-form-row {
+  /* width: 100%; */
+  margin: 10px;
+  display: flex;
+}
+
+.post-form-row-left {
+  width: 100px;
+  margin-right: 20px;
+}
+
+.post-form-row-right {
+  width: calc(100% - 100px);
+}
+
+.post-form-text {
+  width: 100%;
+  padding: 10px;
+  /* margin-right: 20px; */
+  border: 1px solid #dddddd;
+}
+
+.post-form-textarea {
+  width: 100%;
+  height: 10em;
+  padding: 10px;
+  border: 1px solid #dddddd;
+}
+
+.post-form-button {
+  color: white;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  background-color: #7e13ab;
+}
+
+.post-form-select {
+  width: 100%;
+  padding: 10px;
+}
