@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user, except: [:index]
-  before_action :check_administrator, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_post, only: [:show, :edit]
+  before_action :check_administrator, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update]
 
   def index
     @posts = Post.all.order(created_at: :DESC)
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       flash[:notice] = 'お知らせを投稿しました'
-      redirect_to posts_path
+      redirect_to root_path
     else
       flash[:notice] = '投稿できませんでした'
       render '/posts/index'
@@ -35,6 +35,15 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post.title = post_params[:title]
+    @post.content = post_params[:content]
+    if @post.save
+      flash[:notice] = 'お知らせを投稿しました'
+      redirect_to root_path
+    else
+      flash[:notice] = '投稿できませんでした'
+      render '/posts/index'
+    end
   end
 
   private
