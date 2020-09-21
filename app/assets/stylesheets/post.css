@@ -14,7 +14,7 @@
   display: flex;
 }
 
-.post-day {
+.post-list-day {
   display: flex;
   margin-left: 2em;
 }
@@ -66,4 +66,30 @@
 .post-form-select {
   width: 100%;
   padding: 10px;
+}
+
+/* **************************************** */
+/*  投稿管理                               */
+/* **************************************** */
+
+.post-record {
+  display: flex;
+  margin-left: 20px;
+}
+
+.post-element {
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+}
+
+.post-id {
+  width: 50px;
+}
+
+.post-edit, .post-day {
+  width: 200px;
+}
+
+.post-title {
+  width: 300px;
 }

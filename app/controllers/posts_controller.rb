@@ -46,6 +46,13 @@ class PostsController < ApplicationController
     end
   end
 
+  # ****************************************
+  #   投稿管理画面
+  # ****************************************
+  def list
+    @posts = Post.all.order(created_at: :DESC)
+  end
+
   private
 
   def set_post

@@ -16,10 +16,10 @@
         <% @posts.each do |post| %>
           <%= link_to post_path(post) do %>
             <div class='post'>
-              <div class='post-title'>
+              <div class='post-list-title'>
                 <%= post.title %>
               </div>
-              <div class='post-day'>
+              <div class='post-list-day'>
                 [<%= l post.created_at, format: :short %>]
               </div>
             </div>

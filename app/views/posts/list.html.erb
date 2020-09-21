@@ -1,0 +1,61 @@
+<%# **************************************** %>
+<%#   投稿管理ページ （管理者のみ）              %>
+<%# **************************************** %>
+
+<div class='main-wrapper'>
+  <div class='content-title'>
+    <h2>ユーザー管理</h2>
+  </div>
+
+  <div class='content-right'>
+    <%= link_to '投稿の追加', new_post_path %>
+  </div>
+
+  <div class='content-main'>
+    <%# ******************** %>
+    <%#   指導者              %>
+    <%# ******************** %>
+    <div class='content-box'>
+
+      <div class='content-title-small'>
+        <h3>お知らせ</h3>
+      </div>
+
+      <div class='post-record'>
+        <div class='post-id post-element'>
+          id
+        </div>
+        <div class='post-title post-element'>
+          タイトル
+        </div>
+        <div class='post-day post-element'>
+          作成日
+        </div>
+        <div class='post-edit post-element'>
+          操作
+        </div>
+      </div>
+
+      <% @posts.each do |post| %>
+        <div class='post-record'>
+          <div class='post-id post-element'>
+            <%= post.id %>
+          </div>
+          <div class='post-title post-element'>
+            <%= post.title %>
+          </div>
+          <div class='post-day post-element'>
+            <%= l post.created_at, format: :short %>
+          </div>
+          <div class='post-edit post-element'>
+            <%= link_to '編集', edit_post_path(post.id) %>
+            /
+            <%= link_to '削除', post_path(post.id), method: :delete %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
