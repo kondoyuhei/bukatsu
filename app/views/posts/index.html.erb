@@ -15,12 +15,12 @@
       <% if @posts.length >= 1 %>
         <% @posts.each do |post| %>
           <%= link_to post_path(post) do %>
-            <div class='post'>
+            <div class='post-summary'>
               <div class='post-list-title'>
                 <%= post.title %>
               </div>
               <div class='post-list-day'>
-                [<%= l post.created_at, format: :short %>]
+                <%= l post.created_at, format: :tsukihi %>
               </div>
             </div>
           <% end %>

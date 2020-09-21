@@ -5,13 +5,24 @@
   margin-bottom: 20px;
 }
 
-.post {
+.post, .post-summary, .post-comment {
   margin: 0 20px;
   padding: 1em;
+  line-height: 1.5em;
+}
+
+.post, .post-summary {
   box-shadow: 0 2px 6px #c1ced7;
   background-color: white;
-  line-height: 1.5em;
+}
+
+.post p {
+  margin-bottom: 1em;
+}
+
+.post-summary {
   display: flex;
+  justify-content: space-between;
 }
 
 .post-list-day {
