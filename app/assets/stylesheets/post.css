@@ -11,6 +11,12 @@
   box-shadow: 0 2px 6px #c1ced7;
   background-color: white;
   line-height: 1.5em;
+  display: flex;
+}
+
+.post-day {
+  display: flex;
+  margin-left: 2em;
 }
 
 /* **************************************** */

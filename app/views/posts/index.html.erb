@@ -14,9 +14,16 @@
     <div class="posts">
       <% if @posts.length >= 1 %>
         <% @posts.each do |post| %>
-          <div class='post'>
-            <%= link_to post.title, post_path(post) %>
-          </div>
+          <%= link_to post_path(post) do %>
+            <div class='post'>
+              <div class='post-title'>
+                <%= post.title %>
+              </div>
+              <div class='post-day'>
+                [<%= l post.created_at, format: :short %>]
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <% else %>
         <p class='post'>現在お知らせはありません</p>
