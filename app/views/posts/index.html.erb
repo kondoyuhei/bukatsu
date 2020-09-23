@@ -5,28 +5,29 @@
     <div class="content-title">
       <h2>お知らせ</h2>
     </div>
-    <div class="posts">
-      <div class="post">
-        <a href="#">2学期部費の請求書を配りました。</a>
+    <% if @current_user && @current_user.administrator %>
+      <div class='content-description'>
+        <%= link_to '新規投稿', new_post_path %>
       </div>
-      <div class="post">
-        <a href="#">（高校）夏季豊能地区大会の要項</a>
-      </div>
-      <div class="post">
-        <a href="#">1学期部費が未納の方はすぐに支払ってください。</a>
-      </div>
-    </div>
-  </div>
+    <% end %>
 
-  <%# ********** コメントした投稿 ********** %>
-  <div class="posts">
-    <div class="content-title">
-      <h3>自分がコメントした投稿</h3>
-    </div>
     <div class="posts">
-      <div class="post">
-        <a href="#">（高校）夏季豊能地区大会の要項</a>
-      </div>
+      <% if @posts.length >= 1 %>
+        <% @posts.each do |post| %>
+          <%= link_to post_path(post) do %>
+            <div class='post-summary'>
+              <div class='post-list-title'>
+                <%= post.title %>
+              </div>
+              <div class='post-list-day'>
+                <%= l post.created_at, format: :tsukihi %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p class='post'>現在お知らせはありません</p>
+      <% end %>
     </div>
   </div>
 

@@ -1,20 +1,25 @@
-<%= render partial: "shared/header" %>
-
-<div class="main-wrapper">
+<div class='main-wrapper'>
   <%# ***** タイトル ***** %>
-  <div class="content-title">
-    <h2>2学期部費の請求書を配りました。</h2>
+  <div class='content-title'>
+    <h2><%= @post.title %></h2>
   </div>
-  <div class="posts">
-    <div class="post">
-      9月15日に2学期部費の請求書を配りました。9月30日までにお支払いください。
-      <%# post.content %>
+  <div class='content-description'>
+    作成日 <%= l @post.created_at, format: :tsukihi %>
+    <% if @current_user && @current_user.administrator %>
+      <%= link_to '投稿の編集', edit_post_path(@post) %>
+    <% end %>
+  </div>
+  <div class='posts'>
+    <div class='post'>
+      <%= simple_format(@post.content) %>
     </div>
-    <div class="post-comment">
+  </div>
+  <div class='content-title-small'>
+    <h2>コメント</h2>
+  </div>
+  <div class='post-comment'>
+    <p>コメントタイトル</p>
       <%# post.comments %>
-    </div>
   </div>
 
 </div>
-
-<%= render partial: "shared/footer" %>

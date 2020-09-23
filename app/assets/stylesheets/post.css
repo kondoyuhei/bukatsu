@@ -1,0 +1,106 @@
+/* **************************************** */
+/*   投稿メイン                               */
+/* **************************************** */
+.posts {
+  margin-bottom: 20px;
+}
+
+.post, .post-summary, .post-comment {
+  margin: 0 20px;
+  padding: 1em;
+  line-height: 1.5em;
+}
+
+.post, .post-summary {
+  box-shadow: 0 2px 6px #c1ced7;
+  background-color: white;
+}
+
+.post p {
+  margin-bottom: 1em;
+}
+
+.post-summary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-list-day {
+  display: flex;
+  margin-left: 2em;
+}
+
+/* **************************************** */
+/*   投稿フォーム                              */
+/* **************************************** */
+.post-form {
+  width: 100%;
+}
+
+.post-form-row {
+  /* width: 100%; */
+  margin: 10px;
+  display: flex;
+}
+
+.post-form-row-left {
+  width: 100px;
+  margin-right: 20px;
+}
+
+.post-form-row-right {
+  width: calc(100% - 100px);
+}
+
+.post-form-text {
+  width: 100%;
+  padding: 10px;
+  /* margin-right: 20px; */
+  border: 1px solid #dddddd;
+}
+
+.post-form-textarea {
+  width: 100%;
+  height: 10em;
+  padding: 10px;
+  border: 1px solid #dddddd;
+}
+
+.post-form-button {
+  color: white;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  background-color: #7e13ab;
+}
+
+.post-form-select {
+  width: 100%;
+  padding: 10px;
+}
+
+/* **************************************** */
+/*  投稿管理                               */
+/* **************************************** */
+
+.post-record {
+  display: flex;
+  margin-left: 20px;
+}
+
+.post-element {
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+}
+
+.post-id {
+  width: 50px;
+}
+
+.post-edit, .post-day {
+  width: 200px;
+}
+
+.post-title {
+  width: 300px;
+}

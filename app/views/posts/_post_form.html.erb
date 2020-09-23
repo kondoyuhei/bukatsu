@@ -1,0 +1,17 @@
+<div class='post-form-row'>
+  <div class='post-form-row-left'>
+    タイトル
+  </div>
+  <div class='post-form-row-right'>
+    <%= f.text_field :title, class: 'post-form-text', id: 'post-title', placeholder: '例）地区大会のお知らせ', value: @post.title %>
+  </div>
+</div>
+
+<div class='post-form-row'>
+  <div class='post-form-row-left'>
+    本文
+  </div>
+  <div class='post-form-row-right'>
+    <%= f.text_area :content, class: 'post-form-textarea', id: 'post-content', placeholder: '例）○月の「○○地区大会」の案内', value: @post.content, cols: 40, rows: 5 %>
+  </div>
+</div>
