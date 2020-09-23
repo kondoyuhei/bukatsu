@@ -1,7 +1,7 @@
 <%# ******************** ページフッター ******************** %>
 <div class='header-wrapper'>
   <div class='header-left'>
-    <h1><%= link_to '○○部ポータル', root_path %></h1>
+    <h1><%= link_to 'テニス部ポータル', root_path %></h1>
   </div>
   <div class='header-right'>
     <ul class='header-buttons'>
@@ -10,11 +10,10 @@
       <% end %>
       <% if @current_user && @current_user.administrator %>
         <li><%= link_to '新規投稿', new_post_path %></li>
-        <li><%= link_to '投稿管理', '/posts/list' %></li>
-        <li><%= link_to 'ユーザー管理', '/users/list' %></li>
+        <li><%= link_to '投稿管理', posts_list_path %></li>
+        <li><%= link_to 'ユーザー管理', users_list_path %></li>
       <% end %>
-        <li><a href='#'>お知らせ</a></li>
-        <li><a href='#'>マイページ</a></li>
+        <li><%= link_to 'お知らせ', root_path %></li>
       <% if @current_user %>
         <li><%= link_to 'ログアウト', '/logout', method: :delete %></li>
       <% else %>

@@ -56,9 +56,6 @@ ul.header-buttons li a:hover {
   color: white;
   padding: 10px 20px;
   height: 60px;
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
 }
 
 .footer-bottom {
@@ -67,11 +64,15 @@ ul.header-buttons li a:hover {
   align-items: center;
 }
 
+.footer-middle, .footer-right {
+  margin-left: 20px;
+}
+
 .footer-bottom ul {
   list-style: none;
   display: flex;
 }
 
-.footer-bottom li {
-  padding-left: 2em;
+.footer-bottom ul li:not(:first-child) {
+  margin-left: 20px;
 }
