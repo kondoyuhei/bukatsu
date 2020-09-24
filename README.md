@@ -99,7 +99,7 @@
 ## users テーブル
 
 | Column   | Type    | Options     |
-| -------- | ------- | ----------- |
+|:---------|:--------|:------------|
 | name     | string  | null: false |
 | email    | string  | null: false |
 | password | string  | null: false |
@@ -117,7 +117,7 @@
 ## student_details テーブル
 
 | Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
+|:--------|:-----------|:-------------------------------|
 | user    | references | null: false, foreign_key: true |
 | grade   | integer    | null: false                    |
 | class   | string     | null: false                    |
@@ -132,7 +132,7 @@
 ## leader_details テーブル
 
 | Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
+|:---------|:-----------|:-------------------------------|
 | user     | references | null: false, foreign_key: true |
 | position | integer    | null: false                    |
 
@@ -144,7 +144,7 @@
 ## posts テーブル
 
 | Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
+|:--------|:-----------|:-------------------------------|
 | title   | string     | null: false                    |
 | content | references | null: false                    |
 | user    | references | null: false, foregin_key: true |
@@ -160,7 +160,7 @@
 ## comments テーブル
 
 | Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
+|:-----------|:-----------|:-------------------------------|
 | post       | references | null: false, foreign_key: true |
 | user       | references | null: false, foregin_key: true |
 | comment    | text       | null: false                    |
@@ -173,7 +173,7 @@
 ## post_tags テーブル
 
 | Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
+|:-------|:-----------|:-------------------------------|
 | post   | references | null: false, foreign_key: true |
 | tag    | references | null: false, foregin_key: true |
 
@@ -185,9 +185,23 @@
 ## tags テーブル
 
 | Column   | Type       | Options     |
-| -------- | ---------- | ----------- |
+|:---------|:-----------|:------------|
 | tag      | string     | null: false |
 
 ### Association
 - has_many :post_tags
 - has_many :posts, through: :post_tags
+
+## ローカルでの動作方法
+
+### 必要な環境
+ - Ruby 2.6.5 以上
+ - Rails 6.0.0 以上
+ - MySQL
+
+### 動作方法
+ 1. git cloneしてください。
+ 2. アプリケーションのルートフォルダ(bukatsu)に移動し、「bundle install」を実行してください。
+ 3. 「rails db:create」を実行してください。
+ 4. 「rails s」を実行してください。
+ 5. 初回は「localhost:3000/」
