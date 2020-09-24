@@ -120,11 +120,13 @@
             <% end %>
           </div>
           <div class='user-edit user-element'>
-            <%= link_to '編集 ', edit_user_path(student.id) %>
-            /
-            <%= link_to '詳細の編集', edit_student_path(student.id) %>
-            /
-            <%= link_to '削除', user_path(student.id), method: :delete %>
+            <% if student %>
+              <%= link_to '編集 ', edit_user_path(student.id) %>
+              /
+              <%= link_to '詳細の編集', edit_student_path(student.id) %>
+              /
+              <%= link_to '削除', user_path(student.id), method: :delete %>
+            <% end %>
           </div>
         </div>
       <% end %>
@@ -158,10 +160,18 @@
       <% @parents.each do |parent| %>
         <div class='user-record'>
           <div class='user-id user-element'>
-            <%= parent.id %>
+            <% if parent.id %>
+              <%= parent.id %>
+            <% else %>
+              未登録
+            <% end %>
           </div>
           <div class='user-name user-element'>
-            <%= parent.name %>
+            <% if parent.name %>
+              <%= parent.name %>
+            <% else %>
+              未登録
+            <% end %>
           </div>
           <div class='user-name user-element'>
             <% if parent.get_student %>
@@ -171,9 +181,11 @@
             <% end %>
           </div>
           <div class='user-edit user-element'>
-            <%= link_to '編集', edit_user_path(parent.id) %>
-            /
-            <%= link_to '削除', user_path(parent.id), method: :delete %>
+            <% if parent %>
+              <%= link_to '編集', edit_user_path(parent.id) %>
+              /
+              <%= link_to '削除', user_path(parent.id), method: :delete %>
+            <% end %>
           </div>
         </div>
       <% end %>
