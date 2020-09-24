@@ -4,7 +4,8 @@
 
 class UsersController < ApplicationController
   # before_action :authenticate_user,   except: [:login_page, :login, :logout]
-  before_action :authenticate_user,   except: [:login_page, :login, :first_user, :first_user_registration]
+  require 'active_support'
+  efore_action :authenticate_user,   except: [:login_page, :login, :first_user, :first_user_registration]
   before_action :check_administrator, only:   [:new, :edit, :update, :destroy]
   before_action :set_new_user,        only:   [:login_page, :new]
   before_action :prohibit_first_user_registration, only: [:first_user, :first_user_registration]
@@ -121,7 +122,7 @@ class UsersController < ApplicationController
 
   def first_user_registration
   # 初期ユーザー登録
-    @user = User.new(registration_params)
+    @user = User.new(registration_params.except(:admin))
     @user.admin = 11
     if @user.save
       session[:user_id] = @user.id
