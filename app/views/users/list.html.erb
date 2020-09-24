@@ -83,52 +83,78 @@
         </div>
       </div>
 
-      <% @students.each do |student| %>
-        <div class='user-record'>
-          <div class='user-id user-element'>
-            <%= student.id %>
+      <% @studnets.length >= 1 %>
+        <% @students.each do |student| %>
+          <div class='user-record'>
+            <div class='user-id user-element'>
+              <%= student.id %>
+            </div>
+            <div class='user-name user-element'>
+              <%= student.name %>
+            </div>
+            <div class='user-grade user-element'>
+              <% if student.student_detail.grade %>
+                <%= Grade.find(student.student_detail.grade).value %>
+              <% else %>
+                未登録
+              <% end %>
+            </div>
+            <div class='user-class user-element'>
+              <% if student.student_detail.classroom %>
+                <%= Classroom.find(student.student_detail.classroom).value %>
+              <% else %>
+                未登録
+              <% end %>
+            </div>
+            <div class='user-parent user-element'>
+              <% if student.get_parent1 %>
+                <%= student.get_parent1.name %>
+              <% else %>
+                なし
+              <% end %>
+            </div>
+            <div class='user-parent user-element'>
+              <% if student.get_parent2 %>
+                <%= student.get_parent2.name %>
+              <% else %>
+                なし
+              <% end %>
+            </div>
+            <div class='user-edit user-element'>
+              <% if student %>
+                <%= link_to '編集 ', edit_user_path(student.id) %>
+                /
+                <%= link_to '詳細の編集', edit_student_path(student.id) %>
+                /
+                <%= link_to '削除', user_path(student.id), method: :delete %>
+              <% end %>
+            </div>
           </div>
-          <div class='user-name user-element'>
-            <%= student.name %>
-          </div>
-          <div class='user-grade user-element'>
-            <% if student.student_detail.grade %>
-              <%= Grade.find(student.student_detail.grade).value %>
-            <% else %>
+        <% else %>
+          <div class='user-record'>
+            <div class='user-id user-element'>
+              -
+            </div>
+            <div class='user-name user-element'>
               未登録
-            <% end %>
+            </div>
+            <div class='user-grade user-element'>
+              -
+            </div>
+            <div class='user-class user-element'>
+              -
+            </div>
+            <div class='user-parent user-element'>
+              -
+            </div>
+            <div class='user-parent user-element'>
+              -
+            </div>
+            <div class='user-edit user-element'>
+              -
+            </div>
           </div>
-          <div class='user-class user-element'>
-            <% if student.student_detail.classroom %>
-              <%= Classroom.find(student.student_detail.classroom).value %>
-            <% else %>
-              未登録
-            <% end %>
-          </div>
-          <div class='user-parent user-element'>
-            <% if student.get_parent1 %>
-              <%= student.get_parent1.name %>
-            <% else %>
-              なし
-            <% end %>
-          </div>
-          <div class='user-parent user-element'>
-            <% if student.get_parent2 %>
-              <%= student.get_parent2.name %>
-            <% else %>
-              なし
-            <% end %>
-          </div>
-          <div class='user-edit user-element'>
-            <% if student %>
-              <%= link_to '編集 ', edit_user_path(student.id) %>
-              /
-              <%= link_to '詳細の編集', edit_student_path(student.id) %>
-              /
-              <%= link_to '削除', user_path(student.id), method: :delete %>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
     
     </div>
@@ -157,37 +183,46 @@
         </div>
       </div>
 
-      <% @parents.each do |parent| %>
-        <div class='user-record'>
-          <div class='user-id user-element'>
-            <% if parent.id %>
-              <%= parent.id %>
-            <% else %>
-              未登録
-            <% end %>
-          </div>
-          <div class='user-name user-element'>
-            <% if parent.name %>
-              <%= parent.name %>
-            <% else %>
-              未登録
-            <% end %>
-          </div>
-          <div class='user-name user-element'>
-            <% if parent.get_student %>
-              <%= parent.get_student.name %>
-            <% else %>
-              なし
-            <% end %>
-          </div>
-          <div class='user-edit user-element'>
-            <% if parent %>
+      <% if @parents.length >= 1 %>
+        <% @parents.each do |parent| %
+          <div class='user-record'>
+            <div class='user-id user-element'>
+              <% if parent.id %>
+                <%= parent.id %>
+              <% end %>
+            </div>
+            <div class='user-name user-element'>
+              <% if parent.name %>
+                <%= parent.name %>
+              <% end %>
+            </div>
+            <div class='user-name user-element'>
+              <% if parent.get_student %>
+                <%= parent.get_student.name %>
+              <% end %>
+            </div>
+            <div class='user-edit user-element'>
               <%= link_to '編集', edit_user_path(parent.id) %>
               /
               <%= link_to '削除', user_path(parent.id), method: :delete %>
-            <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+          <div class='user-record'>
+            <div class='user-id user-element'>
+              -
+            </div>
+            <div class='user-name user-element'>
+              未登録
+            </div>
+            <div class='user-name user-element'>
+              -
+            </div>
+            <div class='user-edit user-element'>
+              -
+            </div>
+          </div>
       <% end %>
     </div>
 
