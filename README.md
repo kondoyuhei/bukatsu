@@ -19,7 +19,8 @@
 
 # テーブル設計
 
-https://lh3.googleusercontent.com/pw/ACtC-3dAe21627O2u_YJ7-QGuV2jANUDm_ZnCfLqSkCI94A4FdEvrh6YfCGPSqi-jVEfrfOSeWjKka_A8Hxa_FXUhMay7R_u-jC7RrB6LusDYFmXH4ilwy3l9SOMOx9AOP-LlJUsxQWFqcA9ThYsnTdViUM=w810-h612-no
+![テーブル設計ER図](https://lh3.googleusercontent.com/pw/ACtC-3dAe21627O2u_YJ7-QGuV2jANUDm_ZnCfLqSkCI94A4FdEvrh6YfCGPSqi-jVEfrfOSeWjKka_A8Hxa_FXUhMay7R_u-jC7RrB6LusDYFmXH4ilwy3l9SOMOx9AOP-LlJUsxQWFqcA9ThYsnTdViUM=w810-h612-no)
+
 図　テーブル設計ER図
 
 ## users テーブル
