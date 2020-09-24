@@ -122,7 +122,6 @@ class UsersController < ApplicationController
   def first_user_registration
   # 初期ユーザー登録
     @user = User.new(registration_params.merge(admin: 11))
-    binding.pry
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "初期ユーザー登録をしました id: #{@user.id} name: #{@user.name}"
