@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <% @studnets.length >= 1 %>
+      <% if @studnets.length >= 1 %>
         <% @students.each do |student| %>
           <div class='user-record'>
             <div class='user-id user-element'>
@@ -130,33 +130,32 @@
               <% end %>
             </div>
           </div>
-        <% else %>
-          <div class='user-record'>
-            <div class='user-id user-element'>
-              -
-            </div>
-            <div class='user-name user-element'>
-              未登録
-            </div>
-            <div class='user-grade user-element'>
-              -
-            </div>
-            <div class='user-class user-element'>
-              -
-            </div>
-            <div class='user-parent user-element'>
-              -
-            </div>
-            <div class='user-parent user-element'>
-              -
-            </div>
-            <div class='user-edit user-element'>
-              -
-            </div>
-          </div>
         <% end %>
+      <% else %>
+        <div class='user-record'>
+          <div class='user-id user-element'>
+            -
+          </div>
+          <div class='user-name user-element'>
+            未登録
+          </div>
+          <div class='user-grade user-element'>
+            -
+          </div>
+          <div class='user-class user-element'>
+            -
+          </div>
+          <div class='user-parent user-element'>
+            -
+          </div>
+          <div class='user-parent user-element'>
+            -
+          </div>
+          <div class='user-edit user-element'>
+            -
+          </div>
+        </div>
       <% end %>
-    
     </div>
 
     <%# ******************** %>
