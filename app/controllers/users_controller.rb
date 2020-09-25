@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # before_action :authenticate_user,   except: [:login_page, :login, :logout]
   require 'active_support'
   before_action :authenticate_user,   except: [:login_page, :login, :first_user, :first_user_registration]
-  before_action :check_administrator, only:   [:new, :edit, :update, :destroy]
+  before_action :check_administrator, only:   [:new, :edit, :update, :destroy, :list]
   before_action :set_new_user,        only:   [:login_page, :new]
   before_action :prohibit_first_user_registration, only: [:first_user, :first_user_registration]
 

@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <% if @studnets != nil %>
+      <% if @students.length >= 1 %>
         <% @students.each do |student| %>
           <div class='user-record'>
             <div class='user-id user-element'>
@@ -182,7 +182,7 @@
         </div>
       </div>
 
-      <% if @parents != nil %>
+      <% if @parents.length >= 1 %>
         <% @parents.each do |parent| %>
           <div class='user-record'>
             <div class='user-id user-element'>
