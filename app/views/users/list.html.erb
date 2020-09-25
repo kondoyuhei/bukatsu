@@ -93,28 +93,28 @@
               <%= student.name %>
             </div>
             <div class='user-grade user-element'>
-              <% unless student.student_detail.grade == nil %>
+              <% if student.student_detail != nil %>
                 <%= Grade.find(student.student_detail.grade).value %>
               <% else %>
                 未登録
               <% end %>
             </div>
             <div class='user-class user-element'>
-              <% unless student.student_detail.classroom == nil %>
+              <% if student.student_detail != nil %>
                 <%= Classroom.find(student.student_detail.classroom).value %>
               <% else %>
                 -
               <% end %>
             </div>
             <div class='user-parent user-element'>
-              <% unless student.get_parent1 == nil %>
+              <% if student.get_parent1 != nil %>
                 <%= student.get_parent1.name %>
               <% else %>
                 -
               <% end %>
             </div>
             <div class='user-parent user-element'>
-              <% unless student.get_parent2 == nil %>
+              <% if student.get_parent2 != nil %>
                 <%= student.get_parent2.name %>
               <% else %>
                 -
