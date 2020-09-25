@@ -107,15 +107,15 @@
               <% end %>
             </div>
             <div class='user-parent user-element'>
-              <% if student.parent1 %>
-                <%= student.parent1.name %>
+              <% if student.get_parent1 %>
+                <%= student.get_parent1.name %>
               <% else %>
                 -
               <% end %>
             </div>
             <div class='user-parent user-element'>
-              <% if student.parent2 %>
-                <%= student.parent2.name %>
+              <% if student.get_parent2 %>
+                <%= student.get_parent2.name %>
               <% else %>
                 -
               <% end %>
@@ -186,14 +186,10 @@
         <% @parents.each do |parent| %>
           <div class='user-record'>
             <div class='user-id user-element'>
-              <% if parent.id %>
-                <%= parent.id %>
-              <% end %>
+              <%= parent.id %>
             </div>
             <div class='user-name user-element'>
-              <% if parent.name %>
-                <%= parent.name %>
-              <% end %>
+              <%= parent.name %>
             </div>
             <div class='user-name user-element'>
               <% if parent.get_student %>
