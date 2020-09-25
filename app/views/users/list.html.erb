@@ -124,7 +124,11 @@
               <% if student %>
                 <%= link_to '編集 ', edit_user_path(student.id) %>
                 /
-                <%= link_to '詳細の編集', edit_student_path(student.id) %>
+                <% if student.student_detail != nil %>
+                  <%= link_to '詳細の編集', edit_student_path(student.id) %>
+                <% else %>
+                  <%= link_to '詳細の作成', set_student_path(student) %>
+                <% end %>
                 /
                 <%= link_to '削除', user_path(student.id), method: :delete %>
               <% end %>
