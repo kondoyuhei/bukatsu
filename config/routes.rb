@@ -4,11 +4,9 @@ Rails.application.routes.draw do
   post   '/login',  to: 'users#login'
   patch  '/login',  to: 'users#login'
   delete '/logout', to: 'users#logout'
-  get    '/users/list', to: 'users#list'
-  get    '/posts/list', to: 'posts#list'
-  # get    '/users/first_user', to: 'users#first_user'
-  # post   '/users/first_user', to: 'users#first_user_registration'
-  resources :posts
+  resources :posts do
+    resource :comments, only: [:create, :update, :destroy]
+  end
   resources :users do
     collection do
       get  :list
