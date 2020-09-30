@@ -41,17 +41,19 @@
     <% end %>
   </div>
 
-  <div class='posts'>
-    <div class='content-description'>
-      <p>コメントするには以下のフォームに入力をします。コメントすると名前が公開されます。</p>
+  <% if @current_user.student || @current_user.administrator %>
+    <div class='posts'>
+      <div class='content-description'>
+        <p>コメントするには以下のフォームに入力をします。コメントすると名前が公開されます。</p>
+      </div>
+      <div class='comment-post-form'>
+        <%= form_with model: @comment, url: post_comments_path(@post) , id: 'comment-post-form', class: 'post-form', local: true do |f| %>
+          <%= render partial: '/comments/comment_form', locals: { f: f } %>
+          <div class='user-form-row'>
+            <%= f.submit 'コメントを投稿する', class: 'post-form-button' %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <div class='comment-post-form'>
-      <%= form_with model: @comment, url: post_comments_path(@post) , id: 'comment-post-form', class: 'post-form', local: true do |f| %>
-        <%= render partial: '/comments/comment_form', locals: { f: f } %>
-        <div class='user-form-row'>
-          <%= f.submit 'コメントを投稿する', class: 'post-form-button' %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <% end %>
 </div>
