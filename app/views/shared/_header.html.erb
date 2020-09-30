@@ -10,8 +10,8 @@
       <% end %>
       <% if @current_user && @current_user.administrator %>
         <li><%= link_to '新規投稿', new_post_path %></li>
-        <li><%= link_to '投稿管理', posts_list_path %></li>
-        <li><%= link_to 'ユーザー管理', users_list_path %></li>
+        <li><%= link_to '投稿管理', list_posts_path %></li>
+        <li><%= link_to 'ユーザー管理', list_users_path %></li>
       <% end %>
         <li><%= link_to 'お知らせ', root_path %></li>
       <% if @current_user %>
