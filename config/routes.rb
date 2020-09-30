@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   patch  '/login',  to: 'users#login'
   delete '/logout', to: 'users#logout'
   resources :posts do
-    resource :comments
     collection do
       get :list
     end
+    resources :comments
   end
   resources :users do
     collection do
