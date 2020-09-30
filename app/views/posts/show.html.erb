@@ -17,9 +17,31 @@
   <div class='content-title-small'>
     <h2>コメント</h2>
   </div>
-  <div class='post-comment'>
-    <p>コメントタイトル</p>
-      <%# post.comments %>
+  <div class='posts'>
+    <% @comments.each do |comment| %>
+      <div class='comment'>
+        <div class='comment-commenter'>
+          <%= comment.user.name %>
+        </div>
+        <div class='comment-content'>
+          <%= comment.comment %>
+        </div>
+        <div class='comment-edit'>
+          <%= link_to '編集',  %>
+        </div>
+      </div>
+    <% end %>
   </div>
 
+  <div class='posts'>
+    <div class='comment-post-form'>
+      <p>コメントを投稿する</p>
+      <%= form_with model: @comment, url: post_comments_path(@post) , id: 'comment-post-form', class: 'post-form', local: true do |f| %>
+        <%= render partial: '/comments/comment_form', locals: { f: f } %>
+        <div class='user-form-row'>
+          <%= f.submit 'コメントを投稿する', class: 'post-form-button' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
