@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
   before_action :authenticate_user, except: [:index]
   before_action :check_administrator, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:comment).order(created_at: :DESC)
+    @posts = Post.all.order(created_at: :DESC)
   end
 
   def show
+    @comment = Comment.new(post_id: @post.id, user_id: @current_user.id)
     @comments = @post.comments
   end
 
@@ -45,6 +46,18 @@ class PostsController < ApplicationController
       flash[:notice] = '投稿できませんでした'
       render '/posts/index'
     end
+  end
+
+  # ****************************************
+  #   投稿の削除
+  # ****************************************
+  def destroy
+    if @post.destroy
+      flash[:notice] = "お知らせを削除しました"
+    else
+      flash[:notice] = "お知らせを削除できませんでした"
+    end
+    redirect_to post_path(@post)
   end
 
   # ****************************************

@@ -1,0 +1,8 @@
+<div class='post-form-row'>
+  <div class='post-form-row-left'>
+    コメント本文
+  </div>
+  <div class='post-form-row-right'>
+    <%= f.text_area :comment, class: 'comment-form-textarea', id: 'post-comment', placeholder: '例）雨の場合はどうなりますか？', value: @comment.comment, cols: 30, rows: 3 %>
+  </div>
+</div>
