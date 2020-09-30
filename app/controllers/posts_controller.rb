@@ -4,10 +4,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
 
   def index
-    @posts = Post.all.order(created_at: :DESC)
+    @posts = Post.includes(:comment).order(created_at: :DESC)
   end
 
   def show
+    @comments = @post.comments
   end
 
   # ****************************************
