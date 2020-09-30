@@ -1,0 +1,46 @@
+<div class='main-wrapper'>
+  <%# ***** タイトル ***** %>
+  <div class='content-title'>
+    <h2><%= @post.title %></h2>
+  </div>
+  <div class='content-description'>
+    作成日 <%= l @post.created_at, format: :tsukihi %>
+    <% if @current_user && @current_user.administrator %>
+      <%= link_to '投稿の編集', edit_post_path(@post) %>
+    <% end %>
+  </div>
+  <div class='posts'>
+    <div class='post'>
+      <%= simple_format(@post.content) %>
+    </div>
+  </div>
+  <div class='content-title-small'>
+    <h2>コメント</h2>
+  </div>
+  <div class='content-description'>
+    <p>コメントの編集を行います。</p>
+    <% if @current_user.administrator && @comment.user != @current_user %>
+      <p>生徒のコメントを教員が編集した場合は、コメントに「（教員によって編集済み）」と表示されます。</p>
+    <% end %>
+  </div>
+  <div class='posts'>
+    <div class='comment-post-form'>
+    
+      <div class='post-form-row'>
+        <div class='post-form-row-left'>
+          コメント者
+        </div>
+        <div class='post-form-row-right'>
+          <%= @comment.user.name %>
+        </div>
+      </div>
+
+      <%= form_with model: @comment, url: post_comment_path(@post.id, @comment.id) , id: 'comment-post-form', class: 'post-form', local: true do |f| %>
+        <%= render partial: '/comments/comment_form', locals: { f: f } %>
+        <div class='user-form-row'>
+          <%= f.submit 'コメントを編集する', class: 'post-form-button' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
